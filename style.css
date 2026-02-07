@@ -139,3 +139,16 @@ footer {
     font-size: 2.2rem;
   }
 }
+.phone-large{
+  display: inline-block;
+  font-size: 2.2rem;      /* LARGE */
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  margin: 10px 0 18px;
+}
+
+/* Que no se vea enorme en celular */
+@media (max-width: 480px){
+  .phone-large{ font-size: 1.8rem; }
+}
