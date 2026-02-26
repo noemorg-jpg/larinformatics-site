@@ -98,8 +98,12 @@ a:hover{ opacity:.85; }
 }
 
 .hero img{
-  width:100%;
+  max-width: 400px;   /* ajusta tamaño aquí */
+  width: 100%;
+  height: auto;
   border-radius:14px;
+  display:block;
+  margin: 0 auto;
 }
 
 /* ===========================
