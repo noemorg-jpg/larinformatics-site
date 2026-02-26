@@ -99,7 +99,7 @@ a:hover{ opacity:.85; }
 
 .hero img{
   max-width: 200px;   /* ajusta tamaño aquí */
-  width: 100%;
+  width: 50%;
   height: auto;
   border-radius:14px;
   display:block;
