@@ -38,11 +38,24 @@
 </div><p class="lrs-note">Introductory offer limited to the first 25 customers and may change for new customers. Taxes, if applicable, are additional.</p></div></section>
 
 <section class="section green-soft" id="subscribe"><div class="container"><h2>Subscribe to LRS</h2>
-<p><strong>Introductory Plan — 1 Support User · $9.99 USD/month.</strong> Use the LRS Viewer on compatible computers with one simultaneous Viewer session per licensed account. Your subscription renews monthly until canceled.</p>
-<div class="lrs-paypal-wrap"><div id="paypal-button-container-P-2CG39952KT059961ENKVWBAQ"></div></div>
+<p>Choose the billing option that works best for you. Each subscription covers 1 computer with one simultaneous Viewer session per licensed account.</p>
+
+<div class="feature-grid">
+<div class="feature-box">
+<h3>Annual Plan - 1 Computer</h3>
+<p><strong>$119.88 USD/year</strong><br>Equivalent to $9.99/month. Billed annually and renews annually until canceled.</p>
+<div class="lrs-paypal-wrap"><div id="paypal-button-container-annual"></div></div>
+</div>
+
+<div class="feature-box">
+<h3>Monthly Plan - 1 Computer</h3>
+<p><strong>$14.99 USD/month</strong><br>Billed monthly and renews monthly until canceled.</p>
+<div class="lrs-paypal-wrap"><div id="paypal-button-container-monthly"></div></div>
+</div>
+</div>
+
 <p class="lrs-note">Payments and recurring billing are processed by PayPal. By subscribing, you agree to the <a href="lrs-terms.html">LRS Terms of Service</a>, <a href="lrs-privacy.html">LRS Privacy Policy</a>, and <a href="lrs-refund-cancellation.html">Refund &amp; Cancellation Policy</a>. After approval, we will show your subscription confirmation and activation instructions.</p>
 </div></section>
-
 <section class="section green" id="requirements"><div class="container"><h2>System Requirements</h2>
 <p>LRS 1.0 is designed for supported Windows computers with an active Internet connection. Availability and performance can vary with the computer, Windows configuration, network quality and security policies.</p></div></section>
 
@@ -77,18 +90,23 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.paypal.com/sdk/js?client-id=BAAOrUVELAWaD1n2mbAs8iKfwbTog0GXyizzbsMAJf5MFUIVhm7nr_tF7tB4-7pkEBVYFTJ3Cu1V5tvOog&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <script>
-  paypal.Buttons({
-    style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-    createSubscription: function(data, actions) {
-      return actions.subscription.create({ plan_id: 'P-2CG39952KT059961ENKVWBAQ' });
-    },
-    onApprove: function(data) {
-      window.location.href = 'lrs-thank-you.html?subscription=' + encodeURIComponent(data.subscriptionID);
-    },
-    onError: function(err) {
-      console.error('PayPal subscription error:', err);
-      alert('PayPal could not complete the subscription. Please try again or contact Latinformatics.');
-    }
-  }).render('#paypal-button-container-P-2CG39952KT059961ENKVWBAQ');
+  function renderSubscriptionButton(container, planId) {
+    paypal.Buttons({
+      style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({ plan_id: planId });
+      },
+      onApprove: function(data) {
+        window.location.href = 'lrs-thank-you.html?subscription=' + encodeURIComponent(data.subscriptionID);
+      },
+      onError: function(err) {
+        console.error('PayPal subscription error:', err);
+        alert('PayPal could not complete the subscription. Please try again or contact Latinformatics.');
+      }
+    }).render(container);
+  }
+
+  renderSubscriptionButton('#paypal-button-container-annual', 'P-9C586B6256083911BNLDIQFI');
+  renderSubscriptionButton('#paypal-button-container-monthly', 'P-40V60201T0798533KNLDINXQ');
 </script>
 </body></html>
